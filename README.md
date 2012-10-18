@@ -1,14 +1,14 @@
-= ORANGE MOCHA FRAPPUCCINO!!!11
+# ORANGE MOCHA FRAPPUCCINO!!!11
 
 A little dsl to build http verification tests quickly on top of the [mocha](https://github.com/visionmedia/mocha) test framework.
 
-== install
+## install
 
 ```
 npm install omf
 ```
 
-== use
+## use
 
 ```js
 var omf = require('omf');
@@ -50,6 +50,48 @@ omf('https://github.com', function(client) {
 });
 ```
 
-== license
+ORANGE MOCHA FRAPPUCCINO just uses a tiny bit of meta-programmy-bla-bla to reduce the boiler plate in set up & tear down of http tests...but you still have the entire mocha framework at your disposal.  For example, you can still nest sub-contexts, do more setup/teardown, or whatever!
+
+```js
+var omf = require('omf');
+var assert = require('assert');
+
+omf('https://github.com', function(client) {
+  describe('when not signed in', function() {
+    before(function(done) {
+      process.nextTick(function() {
+        //some sign out logic maybe?
+        done();
+      });
+    });
+    
+    client.get('/brianc/node-omf', function(response) {
+      response.has.statusCode(200);
+    });
+  });
+});
+```
+
+Also, the requests are all sent using the [request](https://github.com/mikeal/request) library.  Anything you pass as the _optional_ 2nd parameter will be passed straight into the request module.
+
+```js
+omf('https://some-awesome-json-web-service.com', function(client) {
+  describe('with json request', function() {
+    var options = { json: true };
+
+    get('/user1.json', options, function(res) {
+      res.has.statusCode(200);
+    });
+  });
+
+  describe('with non-json request', function() {
+    get('/user1.json', function(res) {
+      res.has.statusCode(406); //not acceptable
+    });
+  });
+});
+```
+
+## license
 
 MIT
