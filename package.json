@@ -1,0 +1,30 @@
+{
+  "name": "omf",
+  "version": "0.0.1",
+  "description": "ORANGE MOCHA FRAPPUCCINO!!!11",
+  "main": "lib/",
+  "scripts": {
+    "test": "mocha -R list"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/brianc/node-omf"
+  },
+  "keywords": [
+    "testing",
+    "integration testing",
+    "functional testing",
+    "http testing",
+    "you do the jitterbug",
+    "A model idiot?"
+  ],
+  "author": "Brian M. Carlson",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "devDependencies": {
+    "express": "*"
+  }
+}
