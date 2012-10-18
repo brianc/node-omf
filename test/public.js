@@ -1,8 +1,8 @@
 //require our client helper
-var client = require('./../');
+var omf = require('./../');
 
 //initialize our test client
-client.test('http://bmc.io', function(app) {
+omf('http://bmc.io', function(app) {
 
   app.get('/', function(response) {
     response.has.statusCode(200);
