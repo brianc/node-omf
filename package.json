@@ -22,7 +22,8 @@
   "license": "MIT",
   "dependencies": {
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "request": "*"
   },
   "devDependencies": {
     "express": "*"
