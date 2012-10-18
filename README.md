@@ -1,6 +1,6 @@
 # ORANGE MOCHA FRAPPUCCINO
 
-A little dsl to build http verification tests quickly on top of the [mocha](https://github.com/visionmedia/mocha) test framework because testing should be fun.
+A little dsl to build http verification tests quickly on top of the [mocha](https://github.com/visionmedia/mocha) test framework because testing should be as fun as possible!
 
 ![ORANGE MOCHA FRABBUCCINO](http://bmc.io/omf.gif)
 
