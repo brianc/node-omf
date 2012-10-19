@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/brianc/node-omf.png)](https://travis-ci.org/brianc/node-omf)
 
-A little library to build http verification tests quickly on top of the [mocha](https://github.com/visionmedia/mocha) test framework because testing should be as fun as possible!
+A little library to build http verification tests quickly on top of [mocha](https://github.com/visionmedia/mocha). Testing is a party and everyone is invited.
 
 ![ORANGE MOCHA FRABBUCCINO](http://bmc.io/omf.gif)
 
