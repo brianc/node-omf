@@ -27,6 +27,7 @@ omf(app, function(app) {
 
   app.post('/data', {json: {name: 'brian'}}, function(res) {
     res.has.statusCode(200);
+    res.is.json();
 
     it('returns valid json', function() {
       assert.equal(this.response.body.user, 'brian');
