@@ -8,6 +8,10 @@ app.get('/', function(req, res, next) {
   res.send('O hai!');
 });
 
+app.get('/status/:status', function(req, res, next) {
+  res.send(parseInt(req.params.status));
+});
+
 app.post('/data', function(req, res, next) {
   if(req.body.name === 'brian') {
     return res.send({user: 'brian'});

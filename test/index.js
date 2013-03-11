@@ -16,6 +16,18 @@ omf(app, function(app) {
     res.is.css();
   });
 
+  app.get('/status/200', function(res) {
+    res.is.ok();
+  });
+
+  app.get('/status/201', function(res) {
+    res.is.ok();
+  });
+
+  app.get('/status/299', function(res) {
+    res.is.ok()
+  });
+
   app.get('/index.js', function(res) {
     res.has.statusCode(200);
     res.is.javascript();
