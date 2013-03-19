@@ -96,6 +96,19 @@ omf('https://some-awesome-json-web-service.com', function(client) {
 });
 ```
 
+Shorthand to just do the bare minimum sanity checks.  These are all equal.
+```js
+omf(app, function(client) {
+  app.get('/', function(res) {
+    res.has.statusCode(200);
+  });
+
+  app.get('/', 200);
+
+  app.get('/');
+});
+```
+
 ## license
 
 MIT

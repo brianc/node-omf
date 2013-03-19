@@ -11,6 +11,10 @@ omf(app, function(app) {
     response.has.body('O hai!');
   });
 
+  app.get('/');
+
+  app.get('/', 200);
+
   app.get('/index.css', function(res) {
     res.has.statusCode(200);
     res.is.css();
