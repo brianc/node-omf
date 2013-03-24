@@ -1,6 +1,6 @@
 {
   "name": "omf",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "ORANGE MOCHA FRAPPUCCINO!!!11",
   "main": "lib/",
   "scripts": {

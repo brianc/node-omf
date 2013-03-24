@@ -15,6 +15,49 @@ omf(app, function(app) {
 
   app.get('/', 200);
 
+  describe('using request directly', function() {
+    before(function(done) {
+      var self = this;
+      app.request.get(app.url('/'), function(err, result) {
+        if(err) return done(err);
+        self.response = result;
+        done();
+      });
+    })
+    app.response.has.statusCode(200);
+  });
+
+  describe('with dynamic builder', function() {
+    var build = function(status) {
+      return function() {
+        return {
+          name: 'dynamicUrl',
+          path: '/status/' + status
+        }
+      }
+    };
+    app.get(build(202), function(res) {
+      res.has.statusCode(202);
+    });
+  });
+
+  describe('with async dynamic builder', function() {
+    return;
+    var build = function(status) {
+      return function(cb) {
+        process.nextTick(function() {
+          cb(null, {
+            name: 'dynamicUrl',
+            path: '/status/' + status
+          });
+        });
+      }
+    };
+    app.get(build(202), function(res) {
+      res.has.statusCode(202);
+    });
+  });
+
   app.get('/index.css', function(res) {
     res.has.statusCode(200);
     res.is.css();

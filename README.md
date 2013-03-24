@@ -98,7 +98,7 @@ omf('https://some-awesome-json-web-service.com', function(client) {
 
 Shorthand to just do the bare minimum sanity checks.  These are all equal.
 ```js
-omf(app, function(client) {
+omf(app, function(app) {
   app.get('/', function(res) {
     res.has.statusCode(200);
   });
@@ -107,6 +107,63 @@ omf(app, function(client) {
 
   app.get('/');
 });
+```
+
+Sometimes you do not know the url ahead of time.  ORANGE MOCHA FRAPPUCCINO supplies you with the same request object used in other tests so you can share a cookie jar and other things.  Example:
+
+```js
+//test login & post flow
+omf(app, function(app) {
+  var credentials = {
+    email: 'test@example.com',
+    password: 'pass'
+  }
+
+  app.post('/', {json: credentials}, function(res) {
+    res.has.statusCode(200);
+  });
+
+  //at this point we have a login cookie, so lets create
+  //a post for our next test...
+
+  var post = {
+    text: 'I love to write posts about things'
+  };
+  app.post('/posts', {json: postJson}, function(res) {
+    res.has.statusCode(201); //created
+    it('has post body and id', function() {
+      //remember the scope of the 'it' tests have access to the
+      //raw response from `request`
+      var savedPost = this.response.body;
+      assert(savedPost.id, 'created savedPost should have a body');
+      assert.equal(savedPost.text, post.text);
+      //let's save the posts ID to a place our other test can access it
+      post.id = savedPost.id;
+    });
+  });
+
+  //now lets test the fetching of the newly created post
+  //remember, we didn't know the ID beforehand, so we don't know the direct url
+  //we're basically dropping out of what ORANGE MOCHA FRAPPUCCINO gives you
+  //as helpers and doing it ourselves manually but we still have 
+  //our applications life-cycle managed and our urls rooted to our 
+  //dynamically hosted app
+  describe('getting saved post', function() {
+    var optionsBuilder = function() {
+      return {
+        path: '/posts/' + post.id
+      }
+    };
+    app.get(optionsBuilder, function(res) {
+      res.has.statusCode(200);
+      it('returns saved post', function() {
+        var savedPost = res.body;
+        assert.equal(savedPost.text, post.text);
+      })
+    });
+  });
+});
+
 ```
 
 ## license
