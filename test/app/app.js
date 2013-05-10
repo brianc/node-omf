@@ -19,4 +19,12 @@ app.post('/data', function(req, res, next) {
   res.send(500, {pwnd: true});
 });
 
+app.put('/data', function(req, res, next) {
+  res.send(201);
+});
+
+app.del('/data', function(req, res, next) {
+  res.send(403);
+});
+
 module.exports = app;

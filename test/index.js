@@ -103,4 +103,13 @@ omf(app, function(app) {
     });
   });
 
+  describe('put', function() {
+    app.put('/data', 201);
+  });
+
+  describe('del (delete)', function() {
+    app.del('/data', 403);
+  });
+
+
 });
