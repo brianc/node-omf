@@ -4,7 +4,7 @@
 
 A little library to build http verification tests quickly on top of [mocha](https://github.com/visionmedia/mocha). Testing is a party, and everyone is invited!
 
-![ORANGE MOCHA FRABBUCCINO](http://bmc.io/omf.gif)
+![ORANGE MOCHA FRABBUCCINO](http://24.media.tumblr.com/eea2893678052758813b333c28166ff7/tumblr_mhkbvuBf7W1r7wlqpo1_400.gif)
 
 ## install
 
