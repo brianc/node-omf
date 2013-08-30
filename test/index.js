@@ -121,8 +121,7 @@ omf(app, function(app) {
       res.has.statusCode(200);
       res.has.body('yes');
     });
-    return;
-    //app.clearCookies();
+    app.clearCookies();
     app.get('/cookie', function(res) {
       res.has.statusCode(200);
       res.has.body('no');
