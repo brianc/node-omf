@@ -112,4 +112,25 @@ omf(app, function(app) {
   });
 
 
+  describe('cookes', function() {
+    app.get('/cookie', function(res) {
+      res.has.statusCode(200);
+      res.has.body('no');
+    });
+    app.get('/cookie', function(res) {
+      res.has.statusCode(200);
+      res.has.body('yes');
+    });
+    return;
+    //app.clearCookies();
+    app.get('/cookie', function(res) {
+      res.has.statusCode(200);
+      res.has.body('no');
+    });
+    app.get('/cookie', function(res) {
+      res.has.statusCode(200);
+      res.has.body('yes');
+    });
+  });
+
 });

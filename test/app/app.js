@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 
 app.use(express.static(__dirname + '/public'));
+app.use(express.cookieParser())
 app.use(express.json());
 
 app.get('/', function(req, res, next) {
@@ -25,6 +26,11 @@ app.put('/data', function(req, res, next) {
 
 app.del('/data', function(req, res, next) {
   res.send(403);
+});
+
+app.get('/cookie', function(req, res, next) {
+  res.cookie('remember', 'yes');
+  res.send(req.cookies.remember || 'no');
 });
 
 module.exports = app;

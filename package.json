@@ -21,9 +21,8 @@
   "author": "Brian M. Carlson",
   "license": "MIT",
   "dependencies": {
-    "mocha": "*",
-    "should": "*",
-    "request": "*"
+    "request": "2.21.0",
+    "mocha": "~1.12.1"
   },
   "devDependencies": {
     "express": "*"
