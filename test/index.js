@@ -132,4 +132,14 @@ omf(app, function(app) {
     });
   });
 
+  describe('basic auth', function() {
+    var auth = {
+      user: 'user',
+      pass: 'pass'
+    }
+    app.get('/basic/test', { auth: auth }, function(res) {
+      res.has.statusCode(204)
+    })
+  })
+
 });

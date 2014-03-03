@@ -4,6 +4,8 @@ var app = express();
 app.use(express.static(__dirname + '/public'));
 app.use(express.cookieParser())
 app.use(express.json());
+app.use('/basic', express.basicAuth('user', 'pass'))
+app.use(app.router)
 
 app.get('/', function(req, res, next) {
   res.send('O hai!');
@@ -32,5 +34,9 @@ app.get('/cookie', function(req, res, next) {
   res.cookie('remember', 'yes');
   res.send(req.cookies.remember || 'no');
 });
+
+app.get('/basic/test', function(req, res, next) {
+  res.send(204)
+})
 
 module.exports = app;
