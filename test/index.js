@@ -142,4 +142,29 @@ omf(app, function(app) {
     })
   })
 
+  describe('json response', function() {
+    app.post('/data', {json: {name: 'brian'}}, function(res) {
+      res.has.statusCode(200)
+
+      it('has json', function() {
+        assert(this.body, 'should set json response if response was json')
+        this.body.happy = true
+      })
+
+      var called = false
+
+      res.has.data({
+        user: function(value) {
+          called = true
+          assert.equal(value, 'brian')
+        },
+        happy: true
+      })
+
+      it('should have called check user function', function() {
+        assert(called)
+      })
+    })
+  })
+
 });
