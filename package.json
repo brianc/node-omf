@@ -26,6 +26,6 @@
     "mocha-check": "0.0.0"
   },
   "devDependencies": {
-    "express": "*"
+    "express": "3.4.x"
   }
 }
