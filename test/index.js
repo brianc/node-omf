@@ -111,6 +111,11 @@ omf(app, function(app) {
     app.del('/data', 403);
   });
 
+  describe('delete', function() {
+    app.delete('/data', 403);
+  });
+
+
 
   describe('cookes', function() {
     app.get('/cookie', function(res) {
